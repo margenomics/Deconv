@@ -23,7 +23,7 @@
 ##' @examples
 ##' c<- FARDEEP_Deconv(matrix = matrix, sig.matrix = sig.matrix, results_dir = results_dir, byCond = TRUE, cond = fractions, method = "abs")
 
-FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= FALSE, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL){
+FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL){
   require(usethis)
   require(devtools)
   require(gplots)
@@ -71,7 +71,7 @@ FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_
   }
   if (byCond==FALSE){
     # If there is no condition vector.
-    if (name==FALSE){
+    if (is.null(name)){
       file <- c("FARDEEP_fractions_",  method , "_","plot.png")
     }else{
       title <- name
@@ -79,7 +79,7 @@ FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_
     }
     file <- paste(file, collapse = "")
     Deconvolution_graph(df= FA, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
-    if (name==FALSE){
+    if (is.null(name)){
       file <- c("FARDEEP_heatmap_", method , "_","plot.png")
     }else{
       # If there is condition vector.
@@ -113,7 +113,7 @@ FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_
       }
       colnames(df) <- df_names
 
-      if (name==FALSE){
+      if (is.null(name)){
         file <- c("FARDEEP_fractions_", method,"_", x, "_","plot.png")
       }else{
         title <- name
@@ -122,7 +122,7 @@ FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
       Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
-      if (name==FALSE){
+      if (is.null(name)){
         file <- c("FARDEEP_heatmap_", method,"_", x, "_","plot.png")
       }else{
         title <- name

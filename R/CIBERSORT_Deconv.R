@@ -54,7 +54,7 @@ CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, heig
   }
   if (by_Cond==FALSE){
     # If there is no condition it does not loop to generate several graphs.
-    if (name=NULL){
+    if (is.null(name)){
       file <- c("CIBERSORT_fractions_", method , "_","plot.png")
     }else{
       title <- name
@@ -63,7 +63,7 @@ CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, heig
     file <- paste(file, collapse = "")
     C$cell_type=rownames(C)
     Deconvolution_graph(df= C, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
-    if (name=NULL){
+    if (is.null(name)){
       file <- c("CIBERSORT_heatmap_", method , "_","plot.png")
     }else{
       title <- name
@@ -97,7 +97,7 @@ CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, heig
       }
       colnames(df) <- df_names
 
-      if (name=NULL){
+      if (is.null(name)){
         file <- c("CIBERSORT_fractions_", method, "_", x, "_","plot.png")
       }else{
         title <- name
@@ -106,7 +106,7 @@ CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, heig
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
       Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
-      if (name=NULL){
+      if (is.null(name)){
         file <- c("CIBERSORT_heatmap_", method, "_", x, "_","plot.png")
       }else{
         title <- name

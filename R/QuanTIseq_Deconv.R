@@ -23,7 +23,7 @@
 ##' @examples
 ##' c<- QuanTIseq_Deconv(matrix = matrix, results_dir = results_dir, byCond = TRUE, cond = fractions)
 
-QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= FALSE, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL){
+QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL){
   require(EPIC)
   require(usethis)
   require(devtools)
@@ -57,7 +57,7 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
 
   if(byCond==FALSE){
     # Without condition vector
-    if (name==FALSE){
+    if (is.null(name)){
       file <- c("QuanTIseq_fractions_", "TIL10" , "_","plot.png")
     }else{
       title <- name
@@ -69,7 +69,7 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
     Q = as.data.frame(Q)
     Q$cell_type=rownames(Q)
     Deconvolution_graph(df= Q, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
-    if (name==FALSE){
+    if (is.null(name)){
       file <- c("QuanTIseq_heatmap_", "TIL10", "_","plot.png")
     }else{
       # With condition vector
@@ -107,7 +107,7 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
       }
       colnames(df) <- df_names
 
-      if (name==FALSE){
+      if (is.null(name)){
         file <- c("QuanTIseq_fractions_", "TIL10_", x, "_","plot.png")
       }else{
         title <- name
@@ -116,7 +116,7 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
       Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
-      if (name==FALSE){
+      if (is.null(name)){
         file <- c("QuanTIseq_heatmap_", "TIL10_" , x, "_","plot.png")
       }else{
         title <- name

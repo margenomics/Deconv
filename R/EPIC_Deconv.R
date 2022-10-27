@@ -22,7 +22,7 @@
 ##' @examples
 ##' c<- EPIC_Deconv(matrix = matrix, sig.matrix = sig.matrix, results_dir = results_dir, byCond = TRUE, cond = fractions)
 
-EPIC_Deconv<- function(matrix, sig.matrix, results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= FALSE, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL){
+EPIC_Deconv<- function(matrix, sig.matrix, results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL){
   require(EPIC)
   require(usethis)
   require(devtools)
@@ -66,7 +66,7 @@ EPIC_Deconv<- function(matrix, sig.matrix, results_dir, height_deconv= 10, width
 
   if (byCond==FALSE){
     # Without condition vector
-    if (name==FALSE){
+    if (is.null(name)){
       file <- c("EPIC_fractions_","plot.png")
     }else{
       title <- name
@@ -74,7 +74,7 @@ EPIC_Deconv<- function(matrix, sig.matrix, results_dir, height_deconv= 10, width
     }
     file <- paste(file, collapse = "")
     Deconvolution_graph(df= E, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
-    if (name==FALSE){
+    if (is.null(name)){
       file <- c("EPIC_heatmap_","plot.png")
     }else{
       title <- name
@@ -108,7 +108,7 @@ EPIC_Deconv<- function(matrix, sig.matrix, results_dir, height_deconv= 10, width
       }
       colnames(df) <- df_names
 
-      if (name==FALSE){
+      if (is.null(name)){
         file <- c("EPIC_fractions_", x, "_","plot.png")
       }else{
         title <- name
@@ -117,7 +117,7 @@ EPIC_Deconv<- function(matrix, sig.matrix, results_dir, height_deconv= 10, width
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
       Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
-      if (name==FALSE){
+      if (is.null(name)){
 
         file <- c("EPIC_heatmap_", x, "_","plot.png")
       }else{
