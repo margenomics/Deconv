@@ -12,7 +12,7 @@
 ##' @param width_deconv Parameter in which a value is entered that determines the width of the bar chart, by default it is 9.
 ##' @param height_heatmap Parameter in which a value is entered that determines the height of the heatmap, by default it is 700.
 ##' @param width_heatmap Parameter in which a value is entered that determines the width of the heatmap, by default it is 700.
-##' @param name Parameter to enter the name you want to be included in the generated graphics (Ex. "LM22" -> "CIBERSORT_Deconv_LM22_rel_plot.png"), default would be ("CIBERSORT_Deconv_(sig.matrix)_rel_plot.png").
+##' @param name Parameter to enter the name you want to be included in the generated graphics (Ex. "LM22" -> "CIBERSORT_Deconv_LM22_rel_plot.png"), default would be ("CIBERSORT_Deconv_rel_plot.png").
 ##' @param number_format Parameter that allows to change the visualization of the numbers in the heatmap. ("\%.2f") for two decimals and ("\%.1e") for exponential notation.
 ##' @param byCond Parameter in which TRUE is introduced if we introduce a vector so that the function generates the graphs dividing the samples by its condition, by default it is FALSE.
 ##' @param cond Vector that assigns a condition to each sample of the data frame.
@@ -24,7 +24,7 @@
 ##' @examples
 ##' c<- CIBERSORT_Deconv(matrix = matrix, sig.matrix = sig.matrix, results_dir = results_dir, cibersortpath = path_ciber, by_Cond = TRUE, cond = fractions, method = "abs")
 
-CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= FALSE, number_format= "%.2f", by_Cond= FALSE, cond, cibersortpath){
+CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", by_Cond= FALSE, cond, cibersortpath){
   require(usethis)
   require(devtools)
   require(gplots)
@@ -54,7 +54,7 @@ CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, heig
   }
   if (by_Cond==FALSE){
     # If there is no condition it does not loop to generate several graphs.
-    if (name==FALSE){
+    if (name=NULL){
       file <- c("CIBERSORT_fractions_", method , "_","plot.png")
     }else{
       title <- name
@@ -63,7 +63,7 @@ CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, heig
     file <- paste(file, collapse = "")
     C$cell_type=rownames(C)
     Deconvolution_graph(df= C, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
-    if (name==FALSE){
+    if (name=NULL){
       file <- c("CIBERSORT_heatmap_", method , "_","plot.png")
     }else{
       title <- name
@@ -97,7 +97,7 @@ CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, heig
       }
       colnames(df) <- df_names
 
-      if (name==FALSE){
+      if (name=NULL){
         file <- c("CIBERSORT_fractions_", method, "_", x, "_","plot.png")
       }else{
         title <- name
@@ -106,7 +106,7 @@ CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, heig
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
       Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
-      if (name==FALSE){
+      if (name=NULL){
         file <- c("CIBERSORT_heatmap_", method, "_", x, "_","plot.png")
       }else{
         title <- name
