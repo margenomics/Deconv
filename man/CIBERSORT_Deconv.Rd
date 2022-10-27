@@ -29,6 +29,8 @@ Function that generates the relative or absolute deconvolution plots with the CI
 
 \item{cond}{Vector that assigns a condition to each sample of the data frame.}
 
+\item{cibersortpath}{Directory where the document CIBERSORT.R is located.}
+
 \item{byCond}{Parameter in which TRUE is introduced if we introduce a vector so that the function generates the graphs dividing the samples by its condition, by default it is FALSE.}
 }
 \value{
