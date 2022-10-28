@@ -61,7 +61,7 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
       file <- c("QuanTIseq_fractions_", "TIL10" , "_","plot.png")
     }else{
       title <- name
-      file <- c("QuanTIseq_fractions_", "TIL10" , "_","plot.png")
+      file <- c("QuanTIseq_fractions_", "TIL10_" , title,"_plot.png")
     }
     file <- paste(file, collapse = "")
     Q<-Q[,-1]
@@ -74,7 +74,7 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
     }else{
       # With condition vector
       title <- name
-      file <- c("QuanTIseq_heatmap_", "TIL10", "_","plot.png")
+      file <- c("QuanTIseq_heatmap_", "TIL10_", title,"_plot.png")
     }
     file <- paste(file, collapse = "")
     Heatmap_graph(df= Q, file = file, results_dir = results_dir, number_format = number_format, height = height_heatmap, width = width_heatmap)
@@ -111,7 +111,7 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
         file <- c("QuanTIseq_fractions_", "TIL10_", x, "_","plot.png")
       }else{
         title <- name
-        file <- c("QuanTIseq_fractions_", title , "_", x, "_","plot.png")
+        file <- c("QuanTIseq_fractions_", "TIL10_", title , "_", x, "_", name,"_plot.png")
       }
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
@@ -120,7 +120,7 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
         file <- c("QuanTIseq_heatmap_", "TIL10_" , x, "_","plot.png")
       }else{
         title <- name
-        file <- c("QuanTIseq_heatmap_", title , "_", x, "_","plot.png")
+        file <- c("QuanTIseq_heatmap_", "TIL10_", title , "_", x, "_","plot.png")
       }
       file <- paste(file, collapse = "")
       Heatmap_graph(df= c, file = file, results_dir = results_dir, number_format = number_format, height = height_heatmap, width = width_heatmap)
