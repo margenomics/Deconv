@@ -58,7 +58,7 @@ EPIC_Deconv<- function(matrix, sig.matrix, results_dir, height_deconv= 10, width
   C_EPIC[["refProfiles"]] <- as.matrix(sig.mtrx)
 
   # The deconvolution is performed, and gives results over 1.
-  RESULTS <- t(EPIC::EPIC(bulk=cpm, reference=C_EPIC, withOtherCells=TRUE, scaleExprs=FALSE)$cellFractions) #scaleExprs=TRUE by default: only keep genes in common between matrices
+  RESULTS <- t(EPIC::EPIC(bulk=cpm, reference=C_EPIC, withOtherCells=TRUE)$cellFractions) #scaleExprs=TRUE by default: only keep genes in common between matrices
 
   RESULTS <- as.data.frame(RESULTS)
   RESULTS$cell_type=rownames(RESULTS)
