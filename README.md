@@ -116,3 +116,5 @@ c<- EPIC_Deconv(matrix = M, sig.matrix = sig.matrix, results_dir = results_dir, 
 c<- QuanTIseq_Deconv(matrix = M, results_dir = results_dir, name = "bulk_pure_human_normalizedTMM")
 c<- GEDIT_Deconv(matrix = M, sig.matrix = sig.matrix, results_dir = results_dir, name = "TIL10_bulk_pure_human_normalizedTMM")
 ```
+![Image text](/Images/CIBERSORT_FARDEEP_EPIC_QuanTIseq_GEDIT_fractions_examples.png)
+![Image text](/Images/CIBERSORT_FARDEEP_EPIC_QuanTIseq_GEDIT_heatmaps_examples.png)
