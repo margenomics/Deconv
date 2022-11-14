@@ -23,7 +23,7 @@ Function that generates the relative or absolute deconvolution plots with the CI
 
 \item{width_heatmap}{Parameter in which a value is entered that determines the width of the heatmap, by default it is 700.}
 
-\item{name}{Parameter to enter the name you want to be included in the generated graphics (Ex. "LM22" -> "CIBERSORT_Deconv_LM22_rel_plot.png"), default would be ("CIBERSORT_Deconv_(sig.matrix)_rel_plot.png").}
+\item{name}{Parameter to enter the name you want to be included in the generated graphics (Ex. "LM22" -> "CIBERSORT_Deconv_LM22_rel_plot.png"), default would be ("CIBERSORT_Deconv_rel_plot.png").}
 
 \item{number_format}{Parameter that allows to change the visualization of the numbers in the heatmap. ("\%.2f") for two decimals and ("\%.1e") for exponential notation.}
 

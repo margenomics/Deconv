@@ -30,6 +30,10 @@ Function that generates the relative or absolute deconvolution plots with the FA
 \item{byCond}{Parameter in which TRUE is introduced if we introduce a vector so that the function generates the graphs dividing the samples by its condition, by default it is FALSE.}
 
 \item{cond}{Vector that assigns a condition to each sample of the data frame.}
+
+\item{intercept}{Parameter that defines that the samples may contain percentages of other cell types not contemplated in the reference matrix, by default it is TRUE.}
+
+\item{permn_number}{Parameter in which the number of permutations needed to calculate the PValue is noted, default is 10.}
 }
 \value{
 Returns the generated graphs and the df of the deconvolution.
