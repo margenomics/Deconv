@@ -102,6 +102,7 @@ Box_Deconv(data= c, cond= fractions, results_dir = "/bicoh/nidia/Deconv/", f_nam
 ```
 # Examples
 
+```r 
 matrix<- c("bulk_pure_human_normalizedTMM.txt")
 sig.matrix<- c("TIL10")
 
@@ -114,4 +115,4 @@ c<- FARDEEP_Deconv(matrix = M, sig.matrix = sig.matrix, results_dir = results_di
 c<- EPIC_Deconv(matrix = M, sig.matrix = sig.matrix, results_dir = results_dir, name = "TIL10_bulk_pure_human_normalizedTMM")
 c<- QuanTIseq_Deconv(matrix = M, results_dir = results_dir, name = "bulk_pure_human_normalizedTMM")
 c<- GEDIT_Deconv(matrix = M, sig.matrix = sig.matrix, results_dir = results_dir, name = "TIL10_bulk_pure_human_normalizedTMM")
-
+```
