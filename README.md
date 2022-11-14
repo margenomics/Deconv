@@ -108,7 +108,7 @@ sig.matrix<- c("TIL10")
 
 c<- CIBERSORT_Deconv(matrix = matrix, sig.matrix = sig.matrix, results_dir = results_dir, name = "TIL10_bulk_pure_human_normalizedTMM", cibersortpath = cibersort_path)
 
-M<- (read.table(M,sep = "\t",header = T))
+M<- (read.table(matrix,sep = "\t",header = T))
 sig.matrix<- Deconv::TIL10
 
 c<- FARDEEP_Deconv(matrix = M, sig.matrix = sig.matrix, results_dir = results_dir, name = "TIL10_bulk_pure_human_normalizedTMM")
