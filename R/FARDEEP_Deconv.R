@@ -16,6 +16,8 @@
 ##' @param number_format Parameter that allows to change the visualization of the numbers in the heatmap. ("\%.2f") for two decimals and ("\%.1e") for exponential notation.
 ##' @param byCond Parameter in which TRUE is introduced if we introduce a vector so that the function generates the graphs dividing the samples by its condition, by default it is FALSE.
 ##' @param cond Vector that assigns a condition to each sample of the data frame.
+##' @param intercept Parameter that defines that the samples may contain percentages of other cell types not contemplated in the reference matrix, by default it is TRUE.
+##' @param permn_number Parameter in which the number of permutations needed to calculate the PValue is noted, default is 10.
 ##' @return Returns the generated graphs and the df of the deconvolution.
 ##' @author Nidia Barco Armengol
 ##' @export
@@ -23,7 +25,7 @@
 ##' @examples
 ##' c<- FARDEEP_Deconv(matrix = matrix, sig.matrix = sig.matrix, results_dir = results_dir, byCond = TRUE, cond = fractions, method = "abs")
 
-FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL){
+FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL, intercept= TRUE, permn_number= 10){
   require(usethis)
   require(devtools)
   require(gplots)
@@ -55,7 +57,12 @@ FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_
   if (method=="rel"){
 
     # FARDEEP makes the deconvolution over 1.
-    RESULTS = t(FARDEEP::fardeep(sig.mtrx, cpm, nn = TRUE, intercept = TRUE, permn = 10, QN = FALSE)$relative.beta)
+    tryCatch({
+      message("Error in dimnames(x) <- dn :")
+      message("length of 'dimnames' [2] not equal to array extent")
+      message("There are samples that do not identify with any cell type in the reference matrix, try intercept= FALSE to disregard the possible presence of other cell types or permn_number= 0, so that samples with no content are still displayed. ")
+      RESULTS = t(FARDEEP::fardeep(sig.mtrx, cpm, nn = TRUE, intercept = intercept, permn = permn_number, QN = FALSE)$relative.beta)
+    })
 
     RESULTS <- as.data.frame(RESULTS)
     RESULTS$cell_type=rownames(RESULTS)
@@ -63,7 +70,12 @@ FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_
   }else{
 
     # FARDEEP makes the deconvolution over 1.
-    RESULTS = t(FARDEEP::fardeep(sig.mtrx, cpm, nn = TRUE, intercept = TRUE, permn = 10, QN = FALSE)$abs.beta)
+    tryCatch({
+      message("Error in dimnames(x) <- dn :")
+      message("length of 'dimnames' [2] not equal to array extent")
+      message("There are samples that do not identify with any cell type in the reference matrix, try intercept= FALSE to disregard the possible presence of other cell types or permn_number= 0, so that samples with no content are still displayed. ")
+      RESULTS = t(FARDEEP::fardeep(sig.mtrx, cpm, nn = TRUE, intercept = intercept, permn = permn_number, QN = FALSE)$abs.beta)
+    })
 
     RESULTS <- as.data.frame(RESULTS)
     RESULTS$cell_type=rownames(RESULTS)
