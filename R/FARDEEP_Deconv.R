@@ -58,6 +58,7 @@ FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_
 
     # FARDEEP makes the deconvolution over 1.
     tryCatch({
+      message("If it appears:")
       message("Error in dimnames(x) <- dn :")
       message("length of 'dimnames' [2] not equal to array extent")
       message("There are samples that do not identify with any cell type in the reference matrix, try intercept= FALSE to disregard the possible presence of other cell types or permn_number= 0, so that samples with no content are still displayed. ")
@@ -71,6 +72,7 @@ FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_
 
     # FARDEEP makes the deconvolution over 1.
     tryCatch({
+      message("If it appears:")
       message("Error in dimnames(x) <- dn :")
       message("length of 'dimnames' [2] not equal to array extent")
       message("There are samples that do not identify with any cell type in the reference matrix, try intercept= FALSE to disregard the possible presence of other cell types or permn_number= 0, so that samples with no content are still displayed. ")
