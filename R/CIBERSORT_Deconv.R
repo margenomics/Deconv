@@ -98,19 +98,19 @@ CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, heig
       colnames(df) <- df_names
 
       if (is.null(name)){
-        file <- c("CIBERSORT_fractions_", method, "_", x, "_","plot.png")
+        file <- c("CIBERSORT_fractions_", method, "_", unics[x], "_","plot.png")
       }else{
         title <- name
-        file <- c("CIBERSORT_fractions_", title ,"_", method, "_", x, "_","plot.png")
+        file <- c("CIBERSORT_fractions_", title ,"_", method, "_", unics[x], "_","plot.png")
       }
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
       Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
       if (is.null(name)){
-        file <- c("CIBERSORT_heatmap_", method, "_", x, "_","plot.png")
+        file <- c("CIBERSORT_heatmap_", method, "_", unics[x], "_","plot.png")
       }else{
         title <- name
-        file <- c("CIBERSORT_heatmap_", title ,"_", method, "_", x, "_","plot.png")
+        file <- c("CIBERSORT_heatmap_", title ,"_", method, "_", unics[x], "_","plot.png")
       }
       file <- paste(file, collapse = "")
       Heatmap_graph(df= c, file = file, results_dir = results_dir, number_format = number_format, width = width_heatmap, height = height_heatmap)

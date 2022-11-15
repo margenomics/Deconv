@@ -109,20 +109,20 @@ EPIC_Deconv<- function(matrix, sig.matrix, results_dir, height_deconv= 10, width
       colnames(df) <- df_names
 
       if (is.null(name)){
-        file <- c("EPIC_fractions_", x, "_","plot.png")
+        file <- c("EPIC_fractions_", unics[x], "_","plot.png")
       }else{
         title <- name
-        file <- c("EPIC_fractions_", title , "_", x, "_","plot.png")
+        file <- c("EPIC_fractions_", title , "_", unics[x], "_","plot.png")
       }
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
       Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
       if (is.null(name)){
 
-        file <- c("EPIC_heatmap_", x, "_","plot.png")
+        file <- c("EPIC_heatmap_", unics[x], "_","plot.png")
       }else{
         title <- name
-        file <- c("EPIC_heatmap_", title , "_", x, "_","plot.png")
+        file <- c("EPIC_heatmap_", title , "_", unics[x], "_","plot.png")
       }
       file <- paste(file, collapse = "")
       Heatmap_graph(df= c, file = file, results_dir = results_dir, number_format = number_format, height = height_heatmap, width = width_heatmap)

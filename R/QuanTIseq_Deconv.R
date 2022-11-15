@@ -108,19 +108,19 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
       colnames(df) <- df_names
 
       if (is.null(name)){
-        file <- c("QuanTIseq_fractions_", "TIL10_", x, "_","plot.png")
+        file <- c("QuanTIseq_fractions_", "TIL10_", unics[x], "_","plot.png")
       }else{
         title <- name
-        file <- c("QuanTIseq_fractions_", "TIL10_", title , "_", x, "_", name,"_plot.png")
+        file <- c("QuanTIseq_fractions_", "TIL10_", title , "_", unics[x], "_", name,"_plot.png")
       }
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
       Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
       if (is.null(name)){
-        file <- c("QuanTIseq_heatmap_", "TIL10_" , x, "_","plot.png")
+        file <- c("QuanTIseq_heatmap_", "TIL10_" , unics[x], "_","plot.png")
       }else{
         title <- name
-        file <- c("QuanTIseq_heatmap_", "TIL10_", title , "_", x, "_","plot.png")
+        file <- c("QuanTIseq_heatmap_", "TIL10_", title , "_", unics[x], "_","plot.png")
       }
       file <- paste(file, collapse = "")
       Heatmap_graph(df= c, file = file, results_dir = results_dir, number_format = number_format, height = height_heatmap, width = width_heatmap)
