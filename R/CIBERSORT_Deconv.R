@@ -24,7 +24,7 @@
 ##' @examples
 ##' c<- CIBERSORT_Deconv(matrix = matrix, sig.matrix = sig.matrix, results_dir = results_dir, cibersortpath = path_ciber, by_Cond = TRUE, cond = fractions, method = "abs")
 
-CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", by_Cond= FALSE, cond, cibersortpath){
+CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", byCond= FALSE, cond, cibersortpath){
   require(usethis)
   require(devtools)
   require(gplots)
@@ -52,7 +52,7 @@ CIBERSORT_Deconv<- function(matrix, sig.matrix, method= "rel", results_dir, heig
     res_ciber$cell_type=rownames(res_ciber)
     C <- res_ciber[1:(length(rownames(res_ciber))-4),]
   }
-  if (by_Cond==FALSE){
+  if (byCond==FALSE){
     # If there is no condition it does not loop to generate several graphs.
     if (is.null(name)){
       file <- c("CIBERSORT_fractions_", method , "_","plot.png")
