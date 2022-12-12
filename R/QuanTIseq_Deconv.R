@@ -16,6 +16,9 @@
 ##' @param number_format Parameter that allows to change the visualization of the numbers in the heatmap. ("\%.2f") for two decimals and ("\%.1e") for exponential notation.
 ##' @param byCond Parameter in which TRUE is introduced if we introduce a vector so that the function generates the graphs dividing the samples by its condition, by default it is FALSE.
 ##' @param cond Vector that assigns a condition to each sample of the data frame.
+##' @param x.size This parameter allows you to select the font size of the X-axis in the bar chart. The default is 10.
+##' @param y.size This parameter allows you to select the font size of the Y-axis in the bar chart. The default is 10.
+##' @param l.size This parameter allows you to select the font size of the legend in the bar chart. The default is 10.
 ##' @return Returns the generated graphs and the df of the deconvolution.
 ##' @author Nidia Barco Armengol
 ##' @export
@@ -23,7 +26,7 @@
 ##' @examples
 ##' c<- QuanTIseq_Deconv(matrix = matrix, results_dir = results_dir, byCond = TRUE, cond = fractions)
 
-QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL){
+QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL, x.size= 10, y.size=10, l.size=10){
   require(EPIC)
   require(usethis)
   require(devtools)
@@ -68,7 +71,7 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
     Q<-t(Q)
     Q = as.data.frame(Q)
     Q$cell_type=rownames(Q)
-    Deconvolution_graph(df= Q, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
+    Deconvolution_graph(df= Q, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv, x.size= x.size, y.size= y.size, l.size= l.size)
     if (is.null(name)){
       file <- c("QuanTIseq_heatmap_", "TIL10", "_","plot.png")
     }else{
@@ -115,7 +118,7 @@ QuanTIseq_Deconv<- function(matrix, arrays= FALSE, tumor=FALSE, results_dir, hei
       }
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
-      Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
+      Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv, x.size= x.size, y.size= y.size, l.size= l.size)
       if (is.null(name)){
         file <- c("QuanTIseq_heatmap_", "TIL10_" , unics[x], "_","plot.png")
       }else{

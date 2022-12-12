@@ -16,6 +16,12 @@ Function that generate the staked bar chart of different deconvolution methods.
 \item{height}{Parameter in which a value is entered that determines the height of graph, by default it is 10.}
 
 \item{width}{Parameter in which a value is entered that determines the width of the graph, by default it is 9.}
+
+\item{x.size}{This parameter allows you to select the font size of the X-axis. The default is 10.}
+
+\item{y.size}{This parameter allows you to select the font size of the Y-axis. The default is 10.}
+
+\item{l.size}{This parameter allows you to select the font size of the legend. The default is 10.}
 }
 \value{
 Returns the generated graph of the deconvolution.

@@ -34,6 +34,12 @@ Function that generates the relative or absolute deconvolution plots with the FA
 \item{intercept}{Parameter that defines that the samples may contain percentages of other cell types not contemplated in the reference matrix, by default it is TRUE.}
 
 \item{permn_number}{Parameter in which the number of permutations needed to calculate the PValue is noted, default is 10.}
+
+\item{x.size}{This parameter allows you to select the font size of the X-axis in the bar chart. The default is 10.}
+
+\item{y.size}{This parameter allows you to select the font size of the Y-axis in the bar chart. The default is 10.}
+
+\item{l.size}{This parameter allows you to select the font size of the legend in the bar chart. The default is 10.}
 }
 \value{
 Returns the generated graphs and the df of the deconvolution.

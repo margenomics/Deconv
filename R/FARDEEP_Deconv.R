@@ -18,6 +18,9 @@
 ##' @param cond Vector that assigns a condition to each sample of the data frame.
 ##' @param intercept Parameter that defines that the samples may contain percentages of other cell types not contemplated in the reference matrix, by default it is TRUE.
 ##' @param permn_number Parameter in which the number of permutations needed to calculate the PValue is noted, default is 10.
+##' @param x.size This parameter allows you to select the font size of the X-axis in the bar chart. The default is 10.
+##' @param y.size This parameter allows you to select the font size of the Y-axis in the bar chart. The default is 10.
+##' @param l.size This parameter allows you to select the font size of the legend in the bar chart. The default is 10.
 ##' @return Returns the generated graphs and the df of the deconvolution.
 ##' @author Nidia Barco Armengol
 ##' @export
@@ -25,7 +28,7 @@
 ##' @examples
 ##' c<- FARDEEP_Deconv(matrix = matrix, sig.matrix = sig.matrix, results_dir = results_dir, byCond = TRUE, cond = fractions, method = "abs")
 
-FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL, intercept= TRUE, permn_number= 10){
+FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_deconv= 10, width_deconv= 9, height_heatmap= 700, width_heatmap= 700, name= NULL, number_format= "%.2f", byCond= FALSE, cond, data4Tyers= NULL, intercept= TRUE, permn_number= 10, x.size= 10, y.size=10, l.size=10){
   require(usethis)
   require(devtools)
   require(gplots)
@@ -92,7 +95,7 @@ FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_
       file <- c("FARDEEP_fractions_", title , "_" , method , "_","plot.png")
     }
     file <- paste(file, collapse = "")
-    Deconvolution_graph(df= FA, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
+    Deconvolution_graph(df= FA, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv, x.size= x.size, y.size= y.size, l.size= l.size)
     if (is.null(name)){
       file <- c("FARDEEP_heatmap_", method , "_","plot.png")
     }else{
@@ -135,7 +138,7 @@ FARDEEP_Deconv<- function(matrix, sig.matrix, method="rel", results_dir, height_
       }
       file <- paste(file, collapse = "")
       c$cell_type=rownames(c)
-      Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv)
+      Deconvolution_graph(df= c, file = file, results_dir = results_dir, height = height_deconv, width = width_deconv, x.size= x.size, y.size= y.size, l.size= l.size)
       if (is.null(name)){
         file <- c("FARDEEP_heatmap_", method,"_", unics[x], "_","plot.png")
       }else{

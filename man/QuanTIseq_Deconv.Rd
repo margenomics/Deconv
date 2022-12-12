@@ -30,6 +30,12 @@ Function that generates the relative deconvolution graphs with the QuanTIseq met
 \item{byCond}{Parameter in which TRUE is introduced if we introduce a vector so that the function generates the graphs dividing the samples by its condition, by default it is FALSE.}
 
 \item{cond}{Vector that assigns a condition to each sample of the data frame.}
+
+\item{x.size}{This parameter allows you to select the font size of the X-axis in the bar chart. The default is 10.}
+
+\item{y.size}{This parameter allows you to select the font size of the Y-axis in the bar chart. The default is 10.}
+
+\item{l.size}{This parameter allows you to select the font size of the legend in the bar chart. The default is 10.}
 }
 \value{
 Returns the generated graphs and the df of the deconvolution.
